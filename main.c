@@ -22,7 +22,9 @@ int main()
 			}
 			break;
 		case 2:exit(0);
-		case 3:printf("\nBook name:%s\nisbn:%d",name.bname,name.isbn);
+		case 3:
+			
+			printf("\nBook name:%s\nisbn:%d",name[1].bname,name[1].isbn);
 			break;
 		default: printf("\nwrong input");
 	}
