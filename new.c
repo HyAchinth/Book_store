@@ -8,6 +8,40 @@ receipt_list_s receipt_list;
 
 
 
+int if_exists(const char *fname){
+	FILE *file;
+	if ((file = fopen(fname, "r")))
+	{
+		fclose(file);
+		return 1;
+    }
+    return 0;
+}
+
+
+
+
+int load_library(){
+	if(exists("library.dat")){
+		FILE *fp = fopen("library.dat","rb");
+		fread(&library,sizeof(library),1,fp);
+		fclose(fp);
+		return 1;
+	}
+	else return 0;
+}
+
+
+int save_library(){
+	FILE *fp = fopen("company.details","wb+");
+	fwrite(&cat_details,sizeof(scat_details),1,fp);
+	fclose(fp);
+	return 1;
+}
+
+
+
+
 int main()
 {
 int choice,input;
