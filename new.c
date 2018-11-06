@@ -5,7 +5,7 @@
 
 library_s library;
 receipt_list_s receipt_list;
-
+receipt_s receipt_temp;
 
 
 int if_exists(const char *fname){
@@ -24,7 +24,7 @@ int if_exists(const char *fname){
 int load_library(){
 	if(exists("library.dat")){
 		FILE *fp = fopen("library.dat","rb");
-		fread(&library,sizeof(library),1,fp);
+		fread(&library,sizeof(library_s),1,fp);
 		fclose(fp);
 		return 1;
 	}
@@ -34,7 +34,7 @@ int load_library(){
 
 int save_library(){
 	FILE *fp = fopen("company.details","wb+");
-	fwrite(&cat_details,sizeof(scat_details),1,fp);
+	fwrite(&library,sizeof(library_s),1,fp);
 	fclose(fp);
 	return 1;
 }
@@ -43,7 +43,7 @@ int save_library(){
 int load_receipt_list(){
 	if(exists("receipt.list.dat")){
 		FILE *fp = fopen("receipt.list.dat","rb");
-		fread(&receipt_list,sizeof(receipt_list),1,fp);
+		fread(&receipt_list,sizeof(receipt_list_s),1,fp);
 		fclose(fp);
 		return 1;
 	}
@@ -52,6 +52,14 @@ int load_receipt_list(){
 		return 0;
 	}
 }
+
+int save_receipt(char *name){
+	FILE *fp = fopen(name,"wb+");
+	fwrite(&receipt_temp,sizeof(receipt_s),1,fp);
+	fclose(fp);
+	return 1;
+}
+
 
 
 
