@@ -23,5 +23,11 @@ typedef struct{
 
 }receipt_list_s;
 
+void search_books();
 
 
+
+int load_library();
+
+
+int save_library();

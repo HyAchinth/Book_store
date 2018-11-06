@@ -2,11 +2,17 @@
 #include<stdlib.h>
 #include "main.h"
 
+
+library_s library;
+receipt_list_s receipt_list;
+
+
+
 int main()
 {
 int choice,input;
 char name[50];
-void search();
+
 printf("Welcome to XYZ bookstore!\n");
 printf("Enter your choice:\n1.Buy books /. /\n2.Exit\n");
 scanf("%d",&choice};
