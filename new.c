@@ -40,6 +40,16 @@ int save_library(){
 }
 
 
+int load_receipt_list(){
+	if(exists("receipt.list.dat")){
+		FILE *fp = fopen("receipt.list.dat","rb");
+		fread(&receipt_list,sizeof(receipt_list),1,fp);
+		fclose(fp);
+		return 1;
+	}
+	else return 0;
+}
+
 
 
 int main()
