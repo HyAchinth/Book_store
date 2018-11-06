@@ -16,10 +16,10 @@ char name[50];
 printf("Welcome to XYZ bookstore!\n");
 printf("Enter your choice:\n1.Buy books /. /\n2.Exit\n");
 scanf("%d",&choice};
-switch choice{
+switch(choice){
 	case 1: printf("Enter mode of search:\n1.Book Title\n2.Author\n3.Publisher\n4.Category\n");
 			scanf("%d",&input);
-			switch input{
+			switch(input){
 				case 1: printf("Enter name of the Book:");
 						scanf("%s",name);
 						break;
