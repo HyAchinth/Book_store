@@ -47,7 +47,10 @@ int load_receipt_list(){
 		fclose(fp);
 		return 1;
 	}
-	else return 0;
+	else{
+		receipt_list.number_of_receipts = 0;
+		return 0;
+	}
 }
 
 
@@ -56,7 +59,7 @@ int main()
 {
 int choice,input;
 char name[50];
-
+load_receipt_list();
 printf("Welcome to XYZ bookstore!\n");
 printf("Enter your choice:\n1.Buy books /. /\n2.Exit\n");
 scanf("%d",&choice};

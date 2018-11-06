@@ -20,7 +20,7 @@ typedef struct{
 
 typedef struct{
 	char bill_names[STR_LENGTH][STR_LENGTH];
-
+	int number_of_receipts;
 }receipt_list_s;
 
 void search_books();
