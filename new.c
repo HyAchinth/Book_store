@@ -161,30 +161,28 @@ int main(){
 	
 	
 	
-	
-	printf("1. Save 2. Load 3. Make 4. Print");
-	scanf("%d",&choice);
-	switch(choice){
-		case 1:
-			save_library();
-			break;
-		case 2:
-			load_library();
-			break;
-		case 3:
-			make_library();
-			break;
-		case 4:
-			print_slice();
-			break;
-		default:
-			printf("How did you get here");
+	while(0!=1){
+		printf("1. Save 2. Load 3. Make 4. Print 5. Exit");
+		scanf("%d",&choice);
+		switch(choice){
+			case 1:
+				save_library();
+				break;
+			case 2:
+				load_library();
+				break;
+			case 3:
+				make_library();
+				break;
+			case 4:
+				print_slice();
+				break;
+			case 5:
+				exit(0);
+			default:
+				printf("How did you get here");
+		}
 	}
-	
-	
-	
-	
-	
 	
 	
 	return 0;
