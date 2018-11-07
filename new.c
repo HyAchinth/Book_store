@@ -225,13 +225,15 @@ int slices_search_string(char* term,int choice){
 
 int main(){
 	load_receipt_list();int choice;
-char name[STR_LENGTH];
+	char name[STR_LENGTH];
 
 
 	while(1){
-		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n8. Exit\n9. Search by name\n");
+		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n9. Search\n0. Exit\n:");
 		scanf("%d",&choice);
 		switch(choice){
+			case 0:
+				exit(0);
 			case 1:
 				save_library();
 				break;
@@ -253,13 +255,13 @@ char name[STR_LENGTH];
 			case 7:
 				//sort();
 				break;
-			case 8:
-				exit(0);
+			
 			case 9:
                 printf("Enter name:\n");
 				gets(name);
 				slices_search_name(name);
 				break;
+			
 			default:
 				printf("How did you get here");
 		}
