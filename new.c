@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include "main.h"
 
 
@@ -142,7 +143,36 @@ int slices_search_price(float ub,float lb){
 }
 
 
-
+int slices_search_string(char* term,int choice){
+	int i=0;
+	while(library_slice[i]!=-1){
+		int flag=0;
+		// Check if it warrants removal, as it is not present
+		switch(choice){
+			case 1:
+				//bname
+				flag = strstr(library.books[ library_slice[i] ].bname , term) == NULL;
+			break;
+			case 2:
+				//aname
+				flag = strstr(library.books[ library_slice[i] ].aname , term) == NULL;
+			break;
+			case 3:
+				//pname
+				flag = strstr(library.books[ library_slice[i] ].pname , term) == NULL;
+			break;
+			case 4:
+				//category
+				flag = strstr(library.books[ library_slice[i] ].category , term) == NULL;
+			break;
+		}
+		if(flag)
+			slices_remove(i);
+		i++;
+	}
+	return 1;
+}
+	
 /*int main()
 {
 	int choice,input;
