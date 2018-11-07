@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cc main.c -o build.out
+cc new.c -o build.out
