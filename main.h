@@ -39,7 +39,7 @@ int if_exists(char*);
 int make_library();
 int load_ibrary();
 int save_library();
-int print_slice();
+void print_slice();
 int load_receipt_list();
 int save_receipt();
 int slices_len();

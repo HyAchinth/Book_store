@@ -8,7 +8,7 @@ receipt_list_s receipt_list;
 receipt_s receipt_temp;
 int library_slice[BOOK_MAX];
 
-int if_exists(const char *fname){
+int if_exists(char *fname){
 	FILE *file;
 	if ((file = fopen(fname, "r")))
 	{
@@ -47,7 +47,7 @@ int load_library(){
 		fclose(fp);
 		
 		int i;
-		for(i=0;i<number_of_books;i++)
+		for(i=0;i<library.number_of_books;i++)
 			library_slice[i] = i;
 		library_slice[i] = -1;
 		return 1;
