@@ -155,8 +155,6 @@ int slices_search_name(char a[STR_LENGTH]){
 }
 
 
-
-<<<<<<< HEAD
 int slices_search_string(char* term,int choice){
 	int i=0;
 	while(library_slice[i]!=-1){
@@ -188,11 +186,6 @@ int slices_search_string(char* term,int choice){
 }
 	
 /*int main()
-=======
-
-
-	/*int main()
->>>>>>> 75f6a90ebf85b58c10ccba5a970e5e3ab5a9799c
 {
 	int choice,input;
 	char name[STR_LENGTH];
