@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include "main.h"
 
 
@@ -145,7 +146,7 @@ int slices_search_name(char a[STR_LENGTH]){
 	char buffer[STR_LENGTH];
 	int i=0;
 	while(library_slice[i]!=-1){
-		buffer = library.books[ library_slice[i] ].bname;
+		strcpy(buffer,library.books[ library_slice[i] ].bname);
 		if(buffer != a)
 			slices_remove(i);
 		i++;
@@ -197,11 +198,11 @@ int slices_search_name(char a[STR_LENGTH]){
 
 int main(){
 	load_receipt_list();int choice;
-
+char name[STR_LENGTH];
 
 
 	while(1){
-		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n8. Exit\n9. Search by name");
+		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n8. Exit\n9. Search by name\n");
 		scanf("%d",&choice);
 		switch(choice){
 			case 1:
@@ -228,8 +229,7 @@ int main(){
 			case 8:
 				exit(0);
 			case 9:
-				char name[STR_LENGTH];
-				printf("ENter name:\n");
+                printf("Enter name:\n");
 				gets(name);
 				slices_search_name(name);
 				break;
