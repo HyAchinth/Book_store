@@ -28,9 +28,9 @@ int make_library(){
 		printf("Enter book name\n:");
 		scanf("%s",library.books[i-1].bname);
 		printf("Enter book price\n:");
-		scanf("%f",&(library.books[i-1].cost) ); 
-		
-		
+		scanf("%f",&(library.books[i-1].cost) );
+
+
 		printf("Continue? (n=1,y=0)");
 		fflush(stdin);
 		scanf("%d",&b);
@@ -50,9 +50,9 @@ int load_library(){
 		FILE *fp = fopen("library.dat","rb");
 		fread(&library,sizeof(library_s),1,fp);
 		fclose(fp);
-		
+
 		slices_reset();
-		
+
 		return 1;
 	}
 	else return 0;
@@ -107,9 +107,9 @@ int slices_insert_end(int element){
 	else{
 		library_slice[slices_len()+1] = -1;
 		library_slice[slices_len()] = element;
-		
+
 	}
-		
+
 }
 
 int slices_remove(int pos){
@@ -142,7 +142,21 @@ int slices_search_price(float ub,float lb){
 	return 1;
 }
 
+int slices_search_name(char a[STR_LENGTH]){
+	char buffer[STR_LENGTH];
+	int i=0;
+	while(library_slice[i]!=-1){
+		strcpy(buffer,library.books[ library_slice[i] ].bname);
+		if(buffer != a)
+			slices_remove(i);
+		i++;
+	}
+	return 1;
+}
 
+
+
+<<<<<<< HEAD
 int slices_search_string(char* term,int choice){
 	int i=0;
 	while(library_slice[i]!=-1){
@@ -174,23 +188,28 @@ int slices_search_string(char* term,int choice){
 }
 	
 /*int main()
+=======
+
+
+	/*int main()
+>>>>>>> 75f6a90ebf85b58c10ccba5a970e5e3ab5a9799c
 {
 	int choice,input;
 	char name[STR_LENGTH];
 	load_receipt_list();
 	int library_slice[BOOK_MAX];
-	
-	
+
+
 	printf("Welcome to XYZ bookstore!\n");
 	printf("Enter your choice:\n1.Buy books /. /\n2.Exit\n");
 	scanf("%d",&choice};
-	
-	
+
+
 	switch(choice){
-		case 1: 
+		case 1:
 			printf("Enter mode of search:\n1.Book Title\n2.Author\n3.Publisher\n4.Category\n");
 			scanf("%d",&input);
-			
+
 			switch(input){
 				case 1: printf("Enter name of the Book:");
 					scanf("%s",name);
@@ -207,17 +226,17 @@ int slices_search_string(char* term,int choice){
 				default : printf("Wrong input!");
 			}
 			search(name);
-			
+
 
 			*/
-			
+
 int main(){
 	load_receipt_list();int choice;
-	
-	
-	
+char name[STR_LENGTH];
+
+
 	while(1){
-		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n8. Exit");
+		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n8. Exit\n9. Search by name\n");
 		scanf("%d",&choice);
 		switch(choice){
 			case 1:
@@ -243,11 +262,16 @@ int main(){
 				break;
 			case 8:
 				exit(0);
+			case 9:
+                printf("Enter name:\n");
+				gets(name);
+				slices_search_name(name);
+				break;
 			default:
 				printf("How did you get here");
 		}
 	}
-	
-	
+
+
 	return 0;
 }
