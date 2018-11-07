@@ -20,7 +20,7 @@ int if_exists(char *fname){
 
 
 int make_library(){
-	int n;char b;
+	int n;int b;
 	int i=1;
 	while(1){
 		printf("Book %d\n",i);
@@ -30,10 +30,10 @@ int make_library(){
 		scanf("%f",&(library.books[i-1].cost) ); 
 		
 		
-		printf("Continue? (Y/N)");
+		printf("Continue? (n=1,y=0)");
 		fflush(stdin);
-		scanf("%c",&b);
-		if(b=='N'){
+		scanf("%d",&b);
+		if(b){
 			library.number_of_books = i;
 			break;
 		}
