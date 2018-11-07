@@ -224,14 +224,21 @@ int slices_search_string(char* term,int choice){
 			*/
 
 int main(){
+<<<<<<< HEAD
 	load_receipt_list();int choice,input;
 char name[STR_LENGTH];
+=======
+	load_receipt_list();int choice;
+	char name[STR_LENGTH];
+>>>>>>> 5a7570cfe9264b3b72e76184c10a3b2005574ae8
 
 
 	while(1){
-		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n8. Exit\n9. Search by name\n");
+		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n9. Search\n0. Exit\n:");
 		scanf("%d",&choice);
 		switch(choice){
+			case 0:
+				exit(0);
 			case 1:
 				save_library();
 				break;
@@ -253,13 +260,13 @@ char name[STR_LENGTH];
 			case 7:
 				//sort();
 				break;
-			case 8:
-				exit(0);
+			
 			case 9:
                 printf("Enter name,search method:\n1. Book name\n2. Author name\n3. Publisher\n4. Category\n");
 				scanf("%s %d",name,input);
 				slices_search_string(name,input);
 				break;
+			
 			default:
 				printf("How did you get here");
 		}
