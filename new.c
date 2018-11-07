@@ -224,13 +224,8 @@ int slices_search_string(char* term,int choice){
 			*/
 
 int main(){
-<<<<<<< HEAD
-	load_receipt_list();int choice,input;
-char name[STR_LENGTH];
-=======
 	load_receipt_list();int choice;
 	char name[STR_LENGTH];
->>>>>>> 5a7570cfe9264b3b72e76184c10a3b2005574ae8
 
 
 	while(1){
