@@ -47,3 +47,4 @@ int slices_insert_end(int);
 int slices_remove(int);
 void slices_reset();
 int slices_search_price(float,float);
+int slices_search_name(char a[STR_LENGTH]);
