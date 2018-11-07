@@ -49,7 +49,7 @@ int load_library(){
 		fread(&library,sizeof(library_s),1,fp);
 		fclose(fp);
 		
-		reset_slices();
+		slices_reset();
 		
 		return 1;
 	}

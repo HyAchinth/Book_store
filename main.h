@@ -46,3 +46,4 @@ int slices_len();
 int slices_insert_end(int);
 int slices_remove(int);
 void slices_reset();
+int slices_search();
