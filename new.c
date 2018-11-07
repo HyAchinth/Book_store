@@ -129,8 +129,8 @@ void slices_reset(){
 }
 
 
-int slices_search(){
-	float lb=16.0,ub=26.0,buffer;
+int slices_search_price(float ub,float lb){
+	float buffer;
 	int i=0;
 	while(library_slice[i]!=-1){
 		buffer = library.books[ library_slice[i] ].cost;
@@ -203,7 +203,7 @@ int main(){
 				print_slice();
 				break;
 			case 5:
-				slices_search();
+				slices_search_price(16,25);
 				break;
 			case 6:
 				slices_reset();
