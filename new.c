@@ -25,7 +25,7 @@ int make_library(){
 	while(1){
 		printf("Book %d\n",i);
 		printf("Enter book name\n:");
-		scanf("%s",library.books[i-1].bname);
+		gets(library.books[i-1].bname);
 		printf("Enter book price\n:");
 		scanf("%f",&(library.books[i-1].cost) ); 
 		
@@ -49,10 +49,8 @@ int load_library(){
 		fread(&library,sizeof(library_s),1,fp);
 		fclose(fp);
 		
-		int i;
-		for(i=0;i<library.number_of_books;i++)
-			library_slice[i] = i;
-		library_slice[i] = -1;
+		reset_slices();
+		
 		return 1;
 	}
 	else return 0;
@@ -101,21 +99,47 @@ int slices_len(){
 	return i;
 }
 
-int slices_insert(int *slice_array, int element){
-	if(slices_len(slice_array)==BOOK_MAX-1)
+int slices_insert_end(int element){
+	if(slices_len()==BOOK_MAX-1)
 		return 1;
 	else{
-		slice_array[slices_len(slice_array)+1] = -1;
-		slice_array[slices_len(slice_array)] = element;
+		library_slice[slices_len()+1] = -1;
+		library_slice[slices_len()] = element;
 		
 	}
 		
 }
 
-int slices_remove(int *slice_array){
-	if(slices_len(slice_array)>0){
+int slices_remove(int pos){
+	if(slices_len()>0){
+		for(int i=pos+1;i<=slices_len();i++)
+			library_slice[i-1] = library_slice[i];
 	}
+	else
+		return 0;
 }
+
+
+void reset_slices(){
+	int i;
+	for(i=0;i<library.number_of_books;i++)
+		library_slice[i] = i;
+	library_slice[i] = -1;
+}
+
+
+int slices_search(){
+	float lb=16.0,ub=26.0,buffer;
+	int i=0;
+	while(library_slice[i]!=-1){
+		buffer = library.books[ library_slice[i] ].cost;
+		if(buffer>ub || buffer<lb)
+			slices_remove(i);
+		i++;
+	}
+	return 1;
+}
+
 
 
 /*int main()
@@ -161,8 +185,8 @@ int main(){
 	
 	
 	
-	while(0!=1){
-		printf("1. Save 2. Load 3. Make 4. Print 5. Exit");
+	while(1){
+		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n8. Exit");
 		scanf("%d",&choice);
 		switch(choice){
 			case 1:
@@ -178,6 +202,15 @@ int main(){
 				print_slice();
 				break;
 			case 5:
+				search_slices();
+				break;
+			case 6:
+				reset_slices();
+				break;
+			case 7:
+				//sort();
+				break;
+			case 8:
 				exit(0);
 			default:
 				printf("How did you get here");

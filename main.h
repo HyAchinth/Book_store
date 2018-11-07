@@ -43,5 +43,6 @@ void print_slice();
 int load_receipt_list();
 int save_receipt();
 int slices_len();
-int slices_insert(int*,int);
-int slices_remove(int*);
+int slices_insert_end(int);
+int slices_remove(int);
+void reset_slices();
