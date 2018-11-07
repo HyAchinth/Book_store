@@ -257,7 +257,7 @@ int main(){
 				break;
 			
 			case 9:
-                printf("Enter name,search method:\n1. Book name\n2. Author name\n3. Publisher\n4. Category\n");
+                printf("Enter search term,search method:\n1. Book name\n2. Author name\n3. Publisher\n4. Category\n");
 				scanf("%s %d",name,&input);
 				slices_search_string(name,input);
 				break;
