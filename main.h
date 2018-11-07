@@ -31,3 +31,17 @@ int load_library();
 
 
 int save_library();
+
+
+
+
+int if_exists(char*);
+int make_library();
+int load_ibrary();
+int save_library();
+int print_slice();
+int load_receipt_list();
+int save_receipt();
+int slices_len();
+int slices_insert(int*,int);
+int slices_remove(int*);
