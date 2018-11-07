@@ -45,4 +45,4 @@ int save_receipt();
 int slices_len();
 int slices_insert_end(int);
 int slices_remove(int);
-void reset_slices();
+void slices_reset();

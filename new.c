@@ -25,7 +25,7 @@ int make_library(){
 	while(1){
 		printf("Book %d\n",i);
 		printf("Enter book name\n:");
-		gets(library.books[i-1].bname);
+		scanf("%s",library.books[i-1].bname);
 		printf("Enter book price\n:");
 		scanf("%f",&(library.books[i-1].cost) ); 
 		
@@ -120,7 +120,7 @@ int slices_remove(int pos){
 }
 
 
-void reset_slices(){
+void slices_reset(){
 	int i;
 	for(i=0;i<library.number_of_books;i++)
 		library_slice[i] = i;
@@ -202,10 +202,10 @@ int main(){
 				print_slice();
 				break;
 			case 5:
-				search_slices();
+				slices_search();
 				break;
 			case 6:
-				reset_slices();
+				slices_reset();
 				break;
 			case 7:
 				//sort();
