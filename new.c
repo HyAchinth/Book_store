@@ -23,8 +23,9 @@ int make_library(){
 	int n;
 	int i=1;
 	while(1){
+		printf("Book %d",(i+1));
 		printf("Enter book name\n:");
-		scanf("%[^\n]",library.books[i-1].bname);
+		scanf("%s",library.books[i-1].bname);
 		printf("Enter book price\n:");
 		scanf("%f",&(library.books[i-1].cost) ); 
 		
