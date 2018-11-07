@@ -39,6 +39,7 @@ int make_library(){
 		}
 		i++;
 	}
+	slices_reset();
 	return 0;
 }
 
