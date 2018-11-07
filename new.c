@@ -225,7 +225,7 @@ int slices_search_string(char* term,int choice){
 
 int main(){
 	load_receipt_list();int choice;
-	char name[STR_LENGTH];
+	char name[STR_LENGTH]; int input;
 
 
 	while(1){
