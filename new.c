@@ -175,6 +175,7 @@ int main(){
 			print_slice();
 			break;
 		default:
+			printf("How did you get here");
 	}
 	
 	
