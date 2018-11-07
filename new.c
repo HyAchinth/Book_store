@@ -22,7 +22,7 @@ int if_exists(const char *fname){
 int make_library(){
 	int n;
 	int i=1;
-	while(true){
+	while(1){
 		printf("Enter book name\n:");
 		scanf("%[^\n]",library.books[i-1].bname);
 		printf("Enter book price\n:");
@@ -41,7 +41,7 @@ int make_library(){
 
 
 int load_library(){
-	if(exists("library.dat")){
+	if(if_exists("library.dat")){
 		FILE *fp = fopen("library.dat","rb");
 		fread(&library,sizeof(library_s),1,fp);
 		fclose(fp);
@@ -71,7 +71,7 @@ void print_slice(){
 }
 
 int load_receipt_list(){
-	if(exists("receipt.list.dat")){
+	if(if_exists("receipt.list.dat")){
 		FILE *fp = fopen("receipt.list.dat","rb");
 		fread(&receipt_list,sizeof(receipt_list_s),1,fp);
 		fclose(fp);
