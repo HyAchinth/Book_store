@@ -142,18 +142,6 @@ int slices_search_price(float ub,float lb){
 	return 1;
 }
 
-int slices_search_name(char a[STR_LENGTH]){
-	char buffer[STR_LENGTH];
-	int i=0;
-	while(library_slice[i]!=-1){
-		strcpy(buffer,library.books[ library_slice[i] ].bname);
-		if(buffer != a)
-			slices_remove(i);
-		i++;
-	}
-	return 1;
-}
-
 
 int slices_search_string(char* term,int choice){
 	int i=0;
