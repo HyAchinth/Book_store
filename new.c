@@ -21,8 +21,7 @@ int if_exists(char *fname){
 
 
 int make_library(){
-	int n;int b;
-	int i=1;
+	int n,b,i=1;
 	while(1){
 		printf("Book %d\n",i);
 		printf("Enter book name\n:");
@@ -206,8 +205,8 @@ int slices_search_string(char* term,int choice){
 	int library_slice[BOOK_MAX];
 
 
-	printf("Welcome to XYZ bookstore!\n");
-	printf("Enter your choice:\n1.Buy books /. /\n2.Exit\n");
+	printf("Welcome to " STORE_NAME "\n");
+	printf("Enter your choice:\n1.Buy books /n2. Load Bookstore\n3. Make and save bookstore /\n4.Exit\n");
 	scanf("%d",&choice};
 
 
