@@ -152,7 +152,7 @@ int sort(){
 	{
 		for(int j=0 ; j<slices_len()-i-1; j++)
 		{
-			if(x==1) temp = strcmp(library.books[ library_slice[j] ].bname , library.books[ library_slice[j + 1] ].bname);
+			if(x==1) temp = strcmp(library.books[ library_slice[j] ].bname , library.books[ library_slice[j + 1] ].bname) > 0;
 			else temp = library.books[ library_slice[j] ].cost>library.books[ library_slice[j+1] ].cost;
 			if( temp )
 			{
