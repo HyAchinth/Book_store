@@ -196,6 +196,31 @@ int slices_search_string(char* term,int choice){
 	return 1;
 }
 
+
+int order(){
+	int x=1,in,no,i=0;
+	receipt_s receipt;
+	while(x == 1)
+	{
+		printf("Enter the book you want to order(index):\n");
+		scanf("%d",&in);
+		printf("Enter the quantity:\n");
+		scanf("%d", &no);
+		receipt.menu_indices[0][i] = library_slice[in - 1];
+		receipt.menu_indices[1][i] = no;
+		printf("Continue to order?[Y=1]");
+		scanf("%d", &x);
+		i++;
+	}
+	printf("Enter the name of the user:\n");
+	scanf("%s",receipt.cname);
+	save_receipt(receipt.cname);
+	return 1;
+}
+
+
+
+
 /*int main()
 {
 	int choice,input;
@@ -240,7 +265,7 @@ int main(){
 
 
 	while(1){
-		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n9. Search\n0. Exit\n:");
+		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n7. Sort\n8. Order\n9. Search\n10. Load\n0. Exit\n:");
 		scanf("%d",&choice);
 		switch(choice){
 			case 0:
@@ -266,13 +291,17 @@ int main(){
 			case 7:
 				sort();
 				break;
-
+			case 8:
+				order();
+				break;
 			case 9:
                 printf("Enter search term,search method:\n1. Book name\n2. Author name\n3. Publisher\n4. Category\n");
 				scanf("%s %d",name,&input);
 				slices_search_string(name,input);
 				break;
-
+			case 10:
+				//load_reciept
+				break;
 			default:
 				printf("How did you get here");
 		}
