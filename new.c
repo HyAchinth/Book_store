@@ -143,8 +143,8 @@ int slices_search_price(float ub,float lb){
 
 
 int sort(){
-	int temp;
-	float cost,x;
+	int temp,buf;
+	float cost;int x;
 	char name[STR_LENGTH];
 	printf("Sort by? \n(1) Book name\n(2) Price\n");
 	scanf("%d",&x);
@@ -152,9 +152,9 @@ int sort(){
 	{
 		for(int j=0 ; j<slices_len()-i-1; j++)
 		{
-			if(x==1) temp = strcmp(library.books[ library_slice[j+1] ].bname , library.books[ library_slice[j ] ].bname) > 0;
-			else temp = library.books[ library_slice[j] ].cost>library.books[ library_slice[j+1] ].cost;
-			if( temp )
+			if(x==1) buf = strcmp(library.books[ library_slice[j] ].bname , library.books[ library_slice[j + 1] ].bname) > 0;
+			else buf = library.books[ library_slice[j] ].cost > library.books[ library_slice[j+1] ].cost;
+			if( buf )
 			{
 				temp = library_slice[j+1];
 				library_slice[j + 1] = library_slice[j];
