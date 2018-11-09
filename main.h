@@ -1,5 +1,6 @@
 #define BOOK_MAX 128
 #define STR_LENGTH 64
+#define STORE_NAME "XYZ Bookstore"
 typedef struct{
 	int isbn,status;
 	char bname[STR_LENGTH],aname[STR_LENGTH],pname[STR_LENGTH],category[STR_LENGTH];
