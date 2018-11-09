@@ -143,6 +143,31 @@ int slices_search_price(float ub,float lb){
 }
 
 
+int sort(){
+	int temp;
+	float cost,x;
+	char name[STR_LENGTH];
+	printf("Sort by? \n(1) Book name\n(2) Price\n");
+	scanf("%d",&x);
+	if( x == 1)
+	{
+		for(int i=0; i<slices_len()-1 ; i++)
+		{
+			for(int j=0 ; j<slices_len()-i-1; j++)
+			{
+				if( strcmp(library.books[ library_slice[j] ].bname , library.books[ library_slice[j + 1] ].bname))
+				{
+					temp = library_slice[j+1];
+					library_slice[j + 1] = library_slice[j];
+					library_slice[j] = temp;
+				}
+			}
+		}
+	}
+	return 0;
+}
+
+
 int slices_search_string(char* term,int choice){
 	int i=0;
 	while(library_slice[i]!=-1){
@@ -241,15 +266,15 @@ int main(){
 				slices_reset();
 				break;
 			case 7:
-				//sort();
+				sort();
 				break;
-			
+
 			case 9:
                 printf("Enter search term,search method:\n1. Book name\n2. Author name\n3. Publisher\n4. Category\n");
 				scanf("%s %d",name,&input);
 				slices_search_string(name,input);
 				break;
-			
+
 			default:
 				printf("How did you get here");
 		}
