@@ -86,10 +86,26 @@ int load_receipt_list(){
 	}
 }
 
+int save_receipt_list(){
+	FILE *fp = fopen("receipt_list.dat","wb+");
+	fwrite(&receipt_list,sizeof(receipt_list_s),1,fp);
+	fclose(fp);
+	return 1;
+}
+
+int add_receipt(char * fn){
+	for(int i=0;i<STR_LENGTH;i++) receipt_list.bill_names[ receipt_list.number_of_receipts ] [i] = fn[i];
+	receipt_list.number_of_receipts+=1;
+	return 1;
+}
+
 int save_receipt(char *name){
 	FILE *fp = fopen(name,"wb+");
 	fwrite(&receipt_temp,sizeof(receipt_s),1,fp);
 	fclose(fp);
+	load_receipt_list();
+	add_receipt(name);
+	save_receipt_list();
 	return 1;
 }
 
@@ -203,7 +219,7 @@ int order(){
 	char fn[STR_LENGTH];
 	time_t t = time(NULL);
 	printf("%d",t);
-	return 1;
+	//return 1;
 	sprintf(fn,"%d.bill",t);
 	while(x == 1)
 	{
@@ -221,7 +237,7 @@ int order(){
 	scanf("%s",receipt_temp.cname);
 	save_receipt(fn);
 	return 1;
-	*/
+
 }
 
 
@@ -307,6 +323,7 @@ int main(){
 				break;
 			case 10:
 				//load_reciept
+				
 				break;
 			default:
 				printf("How did you get here");
