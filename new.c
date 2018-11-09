@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<time.h>
 #include "main.h"
 
 
@@ -199,23 +200,28 @@ int slices_search_string(char* term,int choice){
 
 int order(){
 	int x=1,in,no,i=0;
-	receipt_s receipt;
+	char fn[STR_LENGTH];
+	time_t t = time(NULL);
+	printf("%d",t);
+	return 1;
+	sprintf(fn,"%d.bill",t);
 	while(x == 1)
 	{
 		printf("Enter the book you want to order(index):\n");
 		scanf("%d",&in);
 		printf("Enter the quantity:\n");
 		scanf("%d", &no);
-		receipt.menu_indices[0][i] = library_slice[in - 1];
-		receipt.menu_indices[1][i] = no;
+		receipt_temp.menu_indices[0][i] = library_slice[in - 1];
+		receipt_temp.menu_indices[1][i] = no;
 		printf("Continue to order?[Y=1]");
 		scanf("%d", &x);
 		i++;
 	}
 	printf("Enter the name of the user:\n");
-	scanf("%s",receipt.cname);
-	save_receipt(receipt.cname);
+	scanf("%s",receipt_temp.cname);
+	save_receipt(fn);
 	return 1;
+	*/
 }
 
 
