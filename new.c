@@ -213,7 +213,7 @@ int slices_search_string(char* term,int choice){
 
 int main(){
 	load_receipt_list();int choice;
-	char name[STR_LENGTH];
+	char name[STR_LENGTH]; int input;
 
 
 	while(1){
@@ -245,8 +245,8 @@ int main(){
 				break;
 			
 			case 9:
-                printf("Enter name,search method:\n1. Book name\n2. Author name\n3. Publisher\n4. Category\n");
-				scanf("%s %d",name,input);
+                printf("Enter search term,search method:\n1. Book name\n2. Author name\n3. Publisher\n4. Category\n");
+				scanf("%s %d",name,&input);
 				slices_search_string(name,input);
 				break;
 			
