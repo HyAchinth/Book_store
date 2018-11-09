@@ -148,20 +148,17 @@ int sort(){
 	char name[STR_LENGTH];
 	printf("Sort by? \n(1) Book name\n(2) Price\n");
 	scanf("%d",&x);
-	if( x == 1)
+	for(int i=0; i<slices_len()-1 ; i++)
 	{
-		for(int i=0; i<slices_len()-1 ; i++)
+		for(int j=0 ; j<slices_len()-i-1; j++)
 		{
-			for(int j=0 ; j<slices_len()-i-1; j++)
+			if(x==1) temp = strcmp(library.books[ library_slice[j] ].bname , library.books[ library_slice[j + 1] ].bname);
+			else temp = library.books[ library_slice[j] ].cost>library.books[ library_slice[j+1] ].cost;
+			if( temp )
 			{
-				if(x==1) temp = strcmp(library.books[ library_slice[j] ].bname , library.books[ library_slice[j + 1] ].bname);
-				else temp = library.books[ library_slice[j] ].cost>library.books[ library_slice[j+1] ].cost;
-				if( temp )
-				{
-					temp = library_slice[j+1];
-					library_slice[j + 1] = library_slice[j];
-					library_slice[j] = temp;
-				}
+				temp = library_slice[j+1];
+				library_slice[j + 1] = library_slice[j];
+				library_slice[j] = temp;
 			}
 		}
 	}
