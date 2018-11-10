@@ -110,6 +110,15 @@ int save_receipt(char *name){
 }
 
 
+int print_receipt_list(){
+	FILE *fp = fopen("receipt_list.dat","wb+");
+	fread(&receipt_list,sizeof(receipt_list_s),receipt_list.number_of_receipts,fp);
+	for(int i=0; i< receipt_list.number_of_receipts; i++){
+	printf("%s\n",receipt_list.bill_names[i]);
+	return 1;
+	}
+}
+
 
 int slices_len(){
 	int i;
@@ -287,7 +296,7 @@ int main(){
 
 
 	while(1){
-		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n7. Sort\n8. Order\n9. Search\n10. Load Reciept List\n0. Exit\n:");
+		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n7. Sort\n8. Order\n9. Search\n10. Load Reciept List\n11. View Reciepts0. Exit\n:");
 		scanf("%d",&choice);
 		switch(choice){
 			case 0:
@@ -323,13 +332,13 @@ int main(){
 				break;
 			case 10:
 				load_receipt_list();
-				
+				break;
+			case 11:
+				print_receipt_list();
 				break;
 			default:
 				printf("How did you get here");
 		}
 	}
-
-
-	return 0;
+return 0;
 }

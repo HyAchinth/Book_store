@@ -15,7 +15,7 @@ typedef struct{
 
 typedef struct{
 	char cname[STR_LENGTH];
-	int menu_indices[BOOK_MAX][2];
+	int menu_indices[2][BOOK_MAX];
 }receipt_s;
 
 
@@ -49,3 +49,8 @@ int slices_remove(int);
 void slices_reset();
 int slices_search_price(float,float);
 int slices_search_name(char a[STR_LENGTH]);
+int add_receipt(char * fn);
+int save_receipt_list();
+int save_receipt(char *name);
+int load_receipt_list();
+int print_receipt_list();
