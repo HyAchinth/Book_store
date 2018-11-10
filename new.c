@@ -287,7 +287,7 @@ int main(){
 
 
 	while(1){
-		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n7. Sort\n8. Order\n9. Search\n10. Load\n0. Exit\n:");
+		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n7. Sort\n8. Order\n9. Search\n10. Load Reciept List\n0. Exit\n:");
 		scanf("%d",&choice);
 		switch(choice){
 			case 0:
@@ -322,7 +322,7 @@ int main(){
 				slices_search_string(name,input);
 				break;
 			case 10:
-				//load_reciept
+				load_receipt_list();
 				
 				break;
 			default:
