@@ -293,10 +293,10 @@ int order(){
 int main(){
 	load_receipt_list();int choice;
 	char name[STR_LENGTH]; int input;
-
+	int low,up;
 
 	while(1){
-		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n7. Sort\n8. Order\n9. Search\n10. Load Reciept List\n11. View Reciepts0. Exit\n:");
+		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n7. Sort\n8. Order\n9. Search\n10. Load Reciept List\n11. View Reciepts\n0. Exit\n:");
 		scanf("%d",&choice);
 		switch(choice){
 			case 0:
@@ -314,7 +314,9 @@ int main(){
 				print_slice();
 				break;
 			case 5:
-				slices_search_price(16,25);
+				printf("Enter the lower and upper price limit:\n");
+				scanf("%d %d", &low,&up);
+				slices_search_price(low,up);
 				break;
 			case 6:
 				slices_reset();
