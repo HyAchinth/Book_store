@@ -80,8 +80,8 @@ void print_slice(){
 }
 
 int load_receipt_list(){
-	if(if_exists("receipt.list.dat")){
-		FILE *fp = fopen("receipt.list.dat","rb");
+	if(if_exists("receipt_list.dat")){
+		FILE *fp = fopen("receipt_list.dat","rb");
 		fread(&receipt_list,sizeof(receipt_list_s),1,fp);
 		fclose(fp);
 		return 1;
