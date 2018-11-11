@@ -88,14 +88,15 @@ int load_receipt_list(){
 
 int save_receipt_list(){
 	FILE *fp = fopen("receipt_list.dat","wb+");
-	fwrite(&receipt_list,sizeof(receipt_list_s),1,fp);
+	if(fwrite(&receipt_list,sizeof(receipt_list_s),1,fp)) printf("successful\n");
 	fclose(fp);
 	return 1;
 }
 
 int add_receipt(char * fn){
-	for(int i=0;i<STR_LENGTH;i++) receipt_list.bill_names[ receipt_list.number_of_receipts ] [i] = fn[i];
+	for(int i=0;i<strlen(fn);i++) receipt_list.bill_names[ receipt_list.number_of_receipts ] [i] = fn[i];
 	receipt_list.number_of_receipts+=1;
+	printf("%d done\n",receipt_list.number_of_receipts);
 	return 1;
 }
 
@@ -111,10 +112,12 @@ int save_receipt(char *name){
 
 
 int print_receipt_list(){
+	printf("WORKING!");
 	FILE *fp = fopen("receipt_list.dat","wb+");
 	fread(&receipt_list,sizeof(receipt_list_s),receipt_list.number_of_receipts,fp);
 	for(int i=0; i< receipt_list.number_of_receipts; i++){
 	printf("%s\n",receipt_list.bill_names[i]);
+	printf("WORKING!");
 	return 1;
 	}
 }
