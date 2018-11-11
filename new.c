@@ -27,6 +27,12 @@ int make_library(){
 		printf("Book %d\n",i);
 		printf("Enter book name\n:");
 		scanf("%s",library.books[i-1].bname);
+		printf("Enter author name\n:");
+		scanf("%s",library.books[i-1].aname);
+		printf("Enter publisher name\n:");
+		scanf("%s",library.books[i-1].pname);
+		printf("Enter the category\n:");
+		scanf("%s",library.books[i-1].category);
 		printf("Enter book price\n:");
 		scanf("%f",&(library.books[i-1].cost) );
 
