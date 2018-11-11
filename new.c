@@ -119,8 +119,7 @@ int save_receipt(char *name){
 
 int print_receipt_list(){
 	printf("WORKING!");
-	FILE *fp = fopen("receipt_list.dat","wb+");
-	fread(&receipt_list,sizeof(receipt_list_s),receipt_list.number_of_receipts,fp);
+	load_receipt_list();		// Use functions as required
 	for(int i=0; i< receipt_list.number_of_receipts; i++){
 	printf("%s\n",receipt_list.bill_names[i]);
 	printf("WORKING!");
