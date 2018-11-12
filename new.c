@@ -160,13 +160,14 @@ void slices_reset(){
 }
 
 
-void slices_search_price(float ub,float lb){
+void slices_search_price(float lb,float ub){
 	float buffer;
 	int i=0;
 	while(library_slice[i]!=-1){
 		buffer = library.books[ library_slice[i] ].cost;
 		if(buffer>ub || buffer<lb)
 			slices_remove(i);
+		else
 		i++;
 	}
 }
