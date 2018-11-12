@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -25,14 +26,15 @@ int make_library(){
 	int n,b,i=1;
 	while(1){
 		printf("Book %d\n",i);
+		fflush(stdin);
 		printf("Enter book name\n:");
-		scanf("%s",library.books[i-1].bname);
+		gets(library.books[i-1].bname);
 		printf("Enter author name\n:");
-		scanf("%s",library.books[i-1].aname);
+		gets(library.books[i-1].aname);
 		printf("Enter publisher name\n:");
-		scanf("%s",library.books[i-1].pname);
+		gets(library.books[i-1].pname);
 		printf("Enter the category\n:");
-		scanf("%s",library.books[i-1].category);
+		gets(library.books[i-1].category);
 		printf("Enter book price\n:");
 		scanf("%f",&(library.books[i-1].cost) );
 
@@ -100,7 +102,7 @@ int save_receipt_list(){
 }
 
 int add_receipt(char * fn){
-		for(int i=0;i<strlen(fn);i++) receipt_list.bill_names[ receipt_list.number_of_receipts ] [i] = fn[i];
+	for(int i=0;i<strlen(fn);i++) receipt_list.bill_names[ receipt_list.number_of_receipts ] [i] = fn[i];
 	receipt_list.number_of_receipts+=1;
 	return 1;
 }
@@ -142,13 +144,11 @@ int slices_insert_end(int element){
 
 }
 
-int slices_remove(int pos){
+void slices_remove(int pos){
 	if(slices_len()>0){
 		for(int i=pos+1;i<=slices_len();i++)
 			library_slice[i-1] = library_slice[i];
 	}
-	else
-		return 0;
 }
 
 
@@ -160,7 +160,7 @@ void slices_reset(){
 }
 
 
-int slices_search_price(float ub,float lb){
+void slices_search_price(float ub,float lb){
 	float buffer;
 	int i=0;
 	while(library_slice[i]!=-1){
@@ -169,7 +169,6 @@ int slices_search_price(float ub,float lb){
 			slices_remove(i);
 		i++;
 	}
-	return 1;
 }
 
 
@@ -222,7 +221,9 @@ int slices_search_string(char* term,int choice){
 		}
 		if(flag)
 			slices_remove(i);
- 		i++;
+ 		else
+		i++;
+		printf("%d",i);
 	}
 	return 1;
 }
@@ -331,8 +332,12 @@ int main(){
 				order();
 				break;
 			case 9:
-                printf("Enter search term,search method:\n1. Book name\n2. Author name\n3. Publisher\n4. Category\n");
-				scanf("%s %d",name,&input);
+                fflush(stdin);
+				printf("Enter search method:\n1. Book name\n2. Author name\n3. Publisher\n4. Category\n");
+				scanf("%d",&input);
+				fflush(stdin);
+				printf("\nEnter the search term:\n");
+				gets(name);
 				slices_search_string(name,input);
 				break;
 			case 10:

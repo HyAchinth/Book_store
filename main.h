@@ -45,12 +45,13 @@ int load_receipt_list();
 int save_receipt();
 int slices_len();
 int slices_insert_end(int);
-int slices_remove(int);
+void slices_remove(int);
 void slices_reset();
-int slices_search_price(float,float);
+void slices_search_price(float,float);
 int slices_search_name(char a[STR_LENGTH]);
 int add_receipt(char * fn);
 int save_receipt_list();
 int save_receipt(char *name);
 int load_receipt_list();
 int print_receipt_list();
+
