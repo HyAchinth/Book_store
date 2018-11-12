@@ -130,13 +130,14 @@ int print_receipt_list(){
 int print_receipt(int pos){
 	char fn[STR_LENGTH];
 	receipt_s receipt;
+	printf("Done1");
 	strcpy(fn,receipt_list.bill_names[pos]);
 	FILE *fp = fopen(fn,"rb");
 	fread(&receipt,sizeof(receipt_s),1,fp);
 	printf("Recipient: %s", receipt.cname);
 	return 1;
 }
-	
+
 
 
 int slices_len(){
@@ -364,6 +365,7 @@ int main(){
 				scanf("%d",x);
 				pos = x-1;
 				print_receipt(pos);
+				break;
 			default:
 				printf("How did you get here");
 		}
