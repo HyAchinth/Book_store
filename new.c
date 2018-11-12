@@ -100,9 +100,8 @@ int save_receipt_list(){
 }
 
 int add_receipt(char * fn){
-	for(int i=0;i<strlen(fn);i++) receipt_list.bill_names[ receipt_list.number_of_receipts ] [i] = fn[i];
+		for(int i=0;i<strlen(fn);i++) receipt_list.bill_names[ receipt_list.number_of_receipts ] [i] = fn[i];
 	receipt_list.number_of_receipts+=1;
-	printf("%d done\n",receipt_list.number_of_receipts);
 	return 1;
 }
 
@@ -118,13 +117,11 @@ int save_receipt(char *name){
 
 
 int print_receipt_list(){
-	printf("WORKING!");
 	load_receipt_list();		// Use functions as required
 	for(int i=0; i< receipt_list.number_of_receipts; i++){
 	printf("%s\n",receipt_list.bill_names[i]);
-	printf("WORKING!");
-	return 1;
 	}
+	return 1;
 }
 
 
@@ -225,7 +222,7 @@ int slices_search_string(char* term,int choice){
 		}
 		if(flag)
 			slices_remove(i);
-		i++;
+ 		i++;
 	}
 	return 1;
 }
@@ -235,8 +232,6 @@ int order(){
 	int x=1,in,no,i=0;
 	char fn[STR_LENGTH];
 	time_t t = time(NULL);
-	printf("%d",t);
-	//return 1;
 	sprintf(fn,"%d.bill",t);
 	while(x == 1)
 	{
