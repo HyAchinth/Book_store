@@ -96,7 +96,7 @@ int load_receipt_list(){
 
 int save_receipt_list(){
 	FILE *fp = fopen("receipt_list.dat","wb+");
-	if(fwrite(&receipt_list,sizeof(receipt_list_s),1,fp)) printf("successful\n");
+	if(fwrite(&receipt_list,sizeof(receipt_list_s),1,fp)) printf("Reciept  Created.\n");
 	fclose(fp);
 	return 1;
 }
@@ -121,10 +121,22 @@ int save_receipt(char *name){
 int print_receipt_list(){
 	load_receipt_list();		// Use functions as required
 	for(int i=0; i< receipt_list.number_of_receipts; i++){
+	printf("%d	",i+1);
 	printf("%s\n",receipt_list.bill_names[i]);
 	}
 	return 1;
 }
+
+int print_receipt(int pos){
+	char fn[STR_LENGTH];
+	receipt_s receipt;
+	strcpy(fn,receipt_list.bill_names[pos]);
+	FILE *fp = fopen(fn,"rb");
+	fread(&receipt,sizeof(receipt_s),1,fp);
+	printf("Recipient: %s", receipt.cname);
+	return 1;
+}
+	
 
 
 int slices_len(){
@@ -298,10 +310,10 @@ int order(){
 int main(){
 	load_receipt_list();int choice;
 	char name[STR_LENGTH]; int input;
-	int low,up;
+	int low,up,x,pos;
 
 	while(1){
-		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n7. Sort\n8. Order\n9. Search\n10. Load Reciept List\n11. View Reciepts\n0. Exit\n:");
+		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n7. Sort\n8. Order\n9. Search\n10. Load Reciept List\n11. View receipt list\n12. View Reciept\n0. Exit\n:");
 		scanf("%d",&choice);
 		switch(choice){
 			case 0:
@@ -347,6 +359,11 @@ int main(){
 			case 11:
 				print_receipt_list();
 				break;
+			case 12:
+				printf("Enter the index of the bill you want to access:\n");
+				scanf("%d",x);
+				pos = x-1;
+				print_receipt(pos);
 			default:
 				printf("How did you get here");
 		}

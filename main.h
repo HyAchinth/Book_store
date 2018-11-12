@@ -54,4 +54,4 @@ int save_receipt_list();
 int save_receipt(char *name);
 int load_receipt_list();
 int print_receipt_list();
-
+int print_receipt(int pos);
