@@ -101,11 +101,27 @@ int save_receipt_list(){
 	return 1;
 }
 
+void reset_receipt_list(){
+	receipt_list.number_of_receipts = 0;
+}
+
 int add_receipt(char * fn){
 	for(int i=0;i<strlen(fn);i++) receipt_list.bill_names[ receipt_list.number_of_receipts ] [i] = fn[i];
 	receipt_list.number_of_receipts+=1;
 	return 1;
 }
+
+int load_receipt(char *name){
+	if(if_exists(name)){
+		FILE *fp = fopen(name,"wb+");
+		fread(&receipt_temp,sizeof(receipt_s),1,fp);
+		fclose(fp);
+		return 1;
+	}else{
+		return 0;
+	}
+}
+
 
 int save_receipt(char *name){
 	FILE *fp = fopen(name,"wb+");
@@ -128,13 +144,11 @@ int print_receipt_list(){
 }
 
 int print_receipt(int pos){
-	char fn[STR_LENGTH];
-	receipt_s receipt;
-	printf("Done1");
-	strcpy(fn,receipt_list.bill_names[pos]);
-	FILE *fp = fopen(fn,"rb");
-	fread(&receipt,sizeof(receipt_s),1,fp);
-	printf("Recipient: %s", receipt.cname);
+
+	if(load_receipt(receipt_list.bill_names[pos]))
+		printf("Recipient: %s", receipt_temp.cname);
+	else
+		printf("Bill does not exist");
 	return 1;
 }
 
@@ -268,50 +282,10 @@ int order(){
 }
 
 
-
-
-/*int main()
-{
-	int choice,input;
-	char name[STR_LENGTH];
-	load_receipt_list();
-	int library_slice[BOOK_MAX];
-
-
-	printf("Welcome to " STORE_NAME "\n");
-	printf("Enter your choice:\n1.Buy books /n2. Load Bookstore\n3. Make and save bookstore /\n4.Exit\n");
-	scanf("%d",&choice};
-
-
-	switch(choice){
-		case 1:
-			printf("Enter mode of search:\n1.Book Title\n2.Author\n3.Publisher\n4.Category\n");
-			scanf("%d",&input);
-
-			switch(input){
-				case 1: printf("Enter name of the Book:");
-					scanf("%s",name);
-					break;
-				case 2: printf("Enter name of the Author:");
-					scanf("%s",name);
-					break;
-				case 3: printf("Enter name of the Publisher\n4:");
-					scanf("%s",name);
-					break;
-				case 4: printf("Enter Category of the book:\n1)Chemistry\n2)Math\n3)Physics");
-					scanf("%s",name);
-					break;
-				default : printf("Wrong input!");
-			}
-			search(name);
-
-
-			*/
-
 int main(){
 	load_receipt_list();int choice;
 	char name[STR_LENGTH]; int input;
-	int low,up,x,pos;
+	int low,up,x;
 
 	while(1){
 		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n7. Sort\n8. Order\n9. Search\n10. Load Reciept List\n11. View receipt list\n12. View Reciept\n0. Exit\n:");
@@ -363,8 +337,7 @@ int main(){
 			case 12:
 				printf("Enter the index of the bill you want to access:\n");
 				scanf("%d",x);
-				pos = x-1;
-				print_receipt(pos);
+				print_receipt(x-1);
 				break;
 			default:
 				printf("How did you get here");
