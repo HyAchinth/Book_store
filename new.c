@@ -101,8 +101,9 @@ int save_library(){
 
 
 void print_slice(){
+	printf("\tBOOKNAME\t\t\t\t\t\t  AUTHOR\t\t\t\tPUBLISHER\t                                    CATEGORY\t\t            PRICE\n");
 	for(int i=0;i<slices_len();i++){
-		printf("%d %s %f \n",i+1,library.books[ library_slice[i] ].bname, library.books[ library_slice[i] ].cost );
+		printf("%-2d   %-60s %-30s %-50s %-30s %f \n",i+1,library.books[ library_slice[i] ].bname,library.books[ library_slice[i] ].aname,library.books[ library_slice[i] ].pname,library.books[ library_slice[i] ].category, library.books[ library_slice[i] ].cost );
 	}
 }
 
@@ -170,7 +171,7 @@ int print_receipt_list(){
 }
 
 int print_receipt(int pos){
-    float total=0;	
+    float total=0;
     load_receipt_list();
 	if(load_receipt(receipt_list.bill_names[pos])){
 		printf("Recipient: %s\n", receipt_temp.cname);
@@ -286,8 +287,7 @@ int slices_search_string(char* term,int choice){
 			slices_remove(i);
  		else
 		i++;
-		printf("%d",i);
-	}
+		}
 	return 1;
 }
 
@@ -375,8 +375,8 @@ int main(){
 				printf("Reset\n");
 				break;
 			case 9:
-				make_library();
-				save_library();
+				//make_library();
+				//save_library();
 				break;
 			case 10:
 				report();

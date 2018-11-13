@@ -3,7 +3,7 @@
 #define STORE_NAME "XYZ Bookstore"
 typedef struct{
 	int isbn,status;
-	char bname[STR_LENGTH],aname[STR_LENGTH],pname[STR_LENGTH],category[STR_LENGTH];
+char bname[STR_LENGTH],aname[STR_LENGTH],pname[STR_LENGTH],category[STR_LENGTH];
 	float cost;
 }book_s;
 
