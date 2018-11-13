@@ -58,3 +58,4 @@ int save_receipt(char*);
 int load_receipt_list();
 int print_receipt_list();
 int print_receipt(int);
+void report();

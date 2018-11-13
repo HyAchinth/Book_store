@@ -22,6 +22,30 @@ int if_exists(char *fname){
 }
 
 
+void report(){
+	int ch,billdate,nbooks_sold=0,i,j;
+	float bill_total=0;
+	time_t t = time(NULL);
+	printf("1.Daily\n2.Weekly");
+	scanf("%d",&ch);
+	ch%=2;
+	//ch = 1 - Daily, 0 - Weekly
+	int diff = 24*60*60*(ch?1:7);
+	for(i=0;i<receipt_list.number_of_receipts;i++){
+		sscanf(receipt_list.bill_names[i],"%d.bill",&billdate);
+		load_receipt(receipt_list.bill_names[i]);
+		if(t - billdate < diff){
+			for(j=0;j<receipt_temp.num_books;j++){
+				// Per book per receipt
+				nbooks_sold+=receipt_temp[1][j];
+				bill_total+= library.books[ receipt_temp.menu_indices[0][j] ].cost * receipt_temp[1][j];
+				
+			}
+		}
+	}
+}
+
+
 int make_library(){
 	int n,b,i=1;
 	while(1){
