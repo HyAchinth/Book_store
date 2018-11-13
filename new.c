@@ -170,8 +170,8 @@ int print_receipt_list(){
 int print_receipt(int pos){
 
 	if(load_receipt(receipt_list.bill_names[pos])){
-		printf("Recipient: %s", receipt_temp.cname);
-		printf("Books Ordered\t\t\t\t\tPrice");
+		printf("Recipient: %s\n", receipt_temp.cname);
+		printf("Books Ordered\t\t\t\t\tPrice\n");
 		for(int i=0;i<receipt_temp.num_books;i++)
 		{printf("%s\t\t\t\t\t%s",library.books[receipt_list.bill_names[0][i]].bname,receipt_list.bill_names[1][i]);
 		}
@@ -326,7 +326,7 @@ int main(){
 		save_library();
 	}
 	while(1){
-		printf("1. Print Selection\n2. Search\n3. Search\n4. Sort\n5. Reset\n6. Order\n7. View Reciept\n8. Reset Receipt list\n3. Remake Library\n0. Exit\n:");
+		printf("1. Print Selection\n2. Search by Price\n3. Search by name\n4. Sort\n5. Reset\n6. Order\n7. View Reciept\n8. Reset Receipt list\n9. Remake Library\n10.View Report \n0. Exit\n:");
 		scanf("%d",&choice);
 		switch(choice){
 			case 0:
@@ -372,6 +372,8 @@ int main(){
 				make_library();
 				save_library();
 				break;
+			case 10:
+				report();
 			default:
 				printf("How did you get here");
 		}
