@@ -417,7 +417,11 @@ int main(){
 				printf("\nEnter the search term:\n");
 				gets(name);
 				slices_search_string(name,input);
-				print_slice();
+				if(slices_len()) print_slice();
+				else {
+                    printf("Sorry no results found.Please Reset and try again.");
+                    break;
+                    }
 				A: printf("\nDo you want to search further by price range?(1=Y, 0=N)");
 				scanf("%d",&ch);
 				if(ch){
