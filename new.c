@@ -64,10 +64,10 @@ int make_library(){
 		scanf("%f",&(library.books[i-1].cost) );
 
 
-		printf("Continue? (n=1,y=0)");
+		printf("Continue? (n=0,y=1)");
 		fflush(stdin);
 		scanf("%d",&b);
-		if(b){
+		if(!b){
 			library.number_of_books = i;
 			break;
 		}
@@ -169,15 +169,17 @@ int print_receipt_list(){
 }
 
 int print_receipt(int pos){
-    char rand;
+    float total=0;	
     load_receipt_list();
 	if(load_receipt(receipt_list.bill_names[pos])){
 		printf("Recipient: %s\n", receipt_temp.cname);
-		printf("Books Ordered\t\t\t\t      Number\n");
+		printf("Books Ordered\t\t\t\t      Number\t\t\tCost\n");
 		for(int i=0;i<receipt_temp.num_books;i++)
 		{
-		    printf("%-30s\t\t\t%d\n",library.books[ receipt_temp.menu_indices[0][i] ].bname,receipt_temp.menu_indices[1][i]);
+		    printf("%-30s\t\t\t%d\t\t\t%f\n",library.books[ receipt_temp.menu_indices[0][i] ].bname,receipt_temp.menu_indices[1][i],library.books[ receipt_temp.menu_indices[0][i] ].cost * receipt_temp.menu_indices[1][i]);
+			total+= library.books[ receipt_temp.menu_indices[0][i] ].cost * receipt_temp.menu_indices[1][i];
 		}
+	printf("TOTAL PRICE:\t\t\t\t\t\t\t\t%f\n",total);
 	}
 	else
 		printf("Bill does not exist");
