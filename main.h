@@ -51,7 +51,7 @@ void slices_remove(int);
 void slices_reset();
 void slices_search_price(float,float);
 int slices_search_name(char);
-int add_receipt(char);
+int add_receipt(char*);
 int load_receipt(char*);
 int save_receipt_list();
 int save_receipt(char*);
