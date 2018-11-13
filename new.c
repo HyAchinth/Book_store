@@ -286,40 +286,30 @@ int main(){
 	load_receipt_list();int choice;
 	char name[STR_LENGTH]; int input;
 	int low,up,x;
-
+	
+	//Inits
+	load_receipt_list();
+	//If library not present, make one!
+	if(!load_library()){
+		printf("Library is not present in current directory. Making one right now!\n");
+		make_library();
+		save_library();
+	}
 	while(1){
-		printf("1. Save\n2. Load\n3. Make\n4. Print Selection\n5. Search\n6. Reset\n7. Sort\n8. Order\n9. Search\n10. Load Reciept List\n11. View receipt list\n12. View Reciept\n13. Reset Receipt list\n0. Exit\n:");
+		printf("1. Print Selection\n2. Search\n3. Search\n4. Sort\n5. Reset\n6. Order\n7. View Reciept\n8. Reset Receipt list\n3. Remake Library\n0. Exit\n:");
 		scanf("%d",&choice);
 		switch(choice){
 			case 0:
 				exit(0);
 			case 1:
-				save_library();
-				break;
-			case 2:
-				load_library();
-				break;
-			case 3:
-				make_library();
-				break;
-			case 4:
 				print_slice();
 				break;
-			case 5:
+			case 2:
 				printf("Enter the lower and upper price limit:\n");
 				scanf("%d %d", &low,&up);
 				slices_search_price(low,up);
 				break;
-			case 6:
-				slices_reset();
-				break;
-			case 7:
-				sort();
-				break;
-			case 8:
-				order();
-				break;
-			case 9:
+			case 3:
                 fflush(stdin);
 				printf("Enter search method:\n1. Book name\n2. Author name\n3. Publisher\n4. Category\n");
 				scanf("%d",&input);
@@ -328,20 +318,29 @@ int main(){
 				gets(name);
 				slices_search_string(name,input);
 				break;
-			case 10:
-				load_receipt_list();
+			case 4:
+				sort();
 				break;
-			case 11:
+			case 5:
+				slices_reset();
+				break;
+			case 6:
+				order();
+				break;
+			case 7:
+				printf("Bills:\n);
 				print_receipt_list();
-				break;
-			case 12:
 				printf("Enter the index of the bill you want to access:\n");
 				scanf("%d",&x);
 				print_receipt(x-1);
 				break;
-			case 13:
+			case 8:
 				reset_receipt_list();
 				printf("Reset\n");
+				break;
+			case 9:
+				make_library();
+				save_library();
 				break;
 			default:
 				printf("How did you get here");
