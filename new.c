@@ -336,7 +336,7 @@ int main(){
 				break;
 			case 12:
 				printf("Enter the index of the bill you want to access:\n");
-				scanf("%d",x);
+				scanf("%d",&x);
 				print_receipt(x-1);
 				break;
 			case 13:
