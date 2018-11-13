@@ -175,10 +175,10 @@ int print_receipt(int pos){
     load_receipt_list();
 	if(load_receipt(receipt_list.bill_names[pos])){
 		printf("Recipient: %s\n", receipt_temp.cname);
-		printf("Books Ordered\t\t\t\t      Number\t\t\tCost\n");
+		printf("Books Ordered\t\t\t\t      \tNumber\t\t\tCost\n");
 		for(int i=0;i<receipt_temp.num_books;i++)
 		{
-		    printf("%-30s\t\t\t%d\t\t\t%f\n",library.books[ receipt_temp.menu_indices[0][i] ].bname,receipt_temp.menu_indices[1][i],library.books[ receipt_temp.menu_indices[0][i] ].cost * receipt_temp.menu_indices[1][i]);
+		    printf("%-50s%d\t\t\t%f\n",library.books[ receipt_temp.menu_indices[0][i] ].bname,receipt_temp.menu_indices[1][i],library.books[ receipt_temp.menu_indices[0][i] ].cost * receipt_temp.menu_indices[1][i]);
 			total+= library.books[ receipt_temp.menu_indices[0][i] ].cost * receipt_temp.menu_indices[1][i];
 		}
 	printf("TOTAL PRICE:\t\t\t\t\t\t\t\t%f\n",total);
@@ -318,7 +318,7 @@ int order(){
 }
 
 
-int main(){
+/*int main(){
 	int choice;
 	char name[STR_LENGTH]; int input;
 	int low,up,x;
@@ -387,4 +387,118 @@ int main(){
 		}
 	}
 return 0;
+}*/
+
+
+
+
+
+
+int main(){
+	int choice,ch;
+	char name[STR_LENGTH]; int input;
+	int low,up,x;
+
+	load_receipt_list();
+	load_library();
+
+	printf("******************************Hello! Welcome to Saraswathi Bookstore*********************************************\n\n");
+
+
+	while(1){
+		printf("\nPlease select your course of action:\n1. Search Books\n2. Sort Books\n3. Reset Search Results\n4. Order books\n5. View Receipts\n6. View Report\n7. Exit\n");
+		scanf("%d",&choice);
+		switch(choice){
+			case 1:
+				fflush(stdin);
+				printf("Enter search method:\n1. Book name\n2. Author name\n3. Publisher\n4. Category\n");
+				scanf("%d",&input);
+				fflush(stdin);
+				printf("\nEnter the search term:\n");
+				gets(name);
+				slices_search_string(name,input);
+				print_slice();
+				A: printf("\nDo you want to search further by price range?(1=Y, 0=N)");
+				scanf("%d",&ch);
+				if(ch){
+					printf("Enter the lower and upper price limit:\n");
+					scanf("%d %d", &low,&up);
+					slices_search_price(low,up);
+					print_slice();
+					goto A;
+				}
+				break;
+			case 2:
+				sort();
+				print_slice();
+				break;
+			case 3:
+				slices_reset();
+				break;
+			case 4:
+				order();
+				break;
+			case 5:
+				printf("Bills:\n");
+				print_receipt_list();
+				printf("Enter the index of the bill you want to access:\n");
+				scanf("%d",&x);
+				print_receipt(x-1);
+				break;
+			case 6:
+				report();
+				break;
+			case 7:
+				exit(0);
+			default:
+				printf("Wrong Input\n");
+				break;
+			}
+	}
+	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
