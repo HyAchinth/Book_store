@@ -1,4 +1,3 @@
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -39,7 +38,7 @@ void report(){
 				// Per book per receipt
 				nbooks_sold+=receipt_temp.menu_indices[1][j];
 				bill_total+= library.books[ receipt_temp.menu_indices[0][j] ].cost * receipt_temp.menu_indices[1][j];
-				
+
 			}
 		}
 	}
@@ -168,12 +167,14 @@ int print_receipt_list(){
 }
 
 int print_receipt(int pos){
-
+    char rand;
+    load_receipt_list();
 	if(load_receipt(receipt_list.bill_names[pos])){
 		printf("Recipient: %s\n", receipt_temp.cname);
-		printf("Books Ordered\t\t\t\t\tPrice\n");
+		printf("Books Ordered\t\t\t\t      Number\n");
 		for(int i=0;i<receipt_temp.num_books;i++)
-		{printf("%s\t\t\t\t\t%s",library.books[receipt_list.bill_names[0][i]].bname,receipt_list.bill_names[1][i]);
+		{
+		    printf("%-30s\t\t\t%d\n",library.books[ receipt_temp.menu_indices[0][i] ].bname,receipt_temp.menu_indices[1][i]);
 		}
 	}
 	else
@@ -313,7 +314,7 @@ int order(){
 
 
 int main(){
-	load_receipt_list();int choice;
+	int choice;
 	char name[STR_LENGTH]; int input;
 	int low,up,x;
 
@@ -374,8 +375,10 @@ int main(){
 				break;
 			case 10:
 				report();
+				break;
 			default:
 				printf("How did you get here");
+				break;
 		}
 	}
 return 0;
