@@ -15,7 +15,7 @@ typedef struct{
 
 typedef struct{
 	char cname[STR_LENGTH];
-	int menu_indices[2][BOOK_MAX];
+	int menu_indices[2][BOOK_MAX],num_books;
 }receipt_s;
 
 

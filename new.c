@@ -145,8 +145,11 @@ int print_receipt_list(){
 
 int print_receipt(int pos){
 
-	if(load_receipt(receipt_list.bill_names[pos]))
+	if(load_receipt(receipt_list.bill_names[pos])){
 		printf("Recipient: %s", receipt_temp.cname);
+		printf("Books Ordered\t\t\t\t\tPrice");
+		for(int i=0;i<receipt_temp.num_books;i++)
+		{printf("%s\t\t\t\t\t%s",receipt_temp.bill_names[0][i]
 	else
 		printf("Bill does not exist");
 	return 1;
@@ -273,6 +276,7 @@ int order(){
 		printf("Continue to order?[Y=1]");
 		scanf("%d", &x);
 		i++;
+		receipt_temp.num_books = i;
 	}
 	printf("Enter the name of the user:\n");
 	scanf("%s",receipt_temp.cname);
