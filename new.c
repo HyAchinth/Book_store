@@ -25,7 +25,8 @@ void report(){
 	int ch,billdate,nbooks_sold=0,i,j;
 	float bill_total=0;
 	time_t t = time(NULL);
-	printf("1.Daily\n2.Weekly");
+	printf("1.Daily\n2.Weekly\n");
+	fflush(stdin);
 	scanf("%d",&ch);
 	ch%=2;
 	//ch = 1 - Daily, 0 - Weekly
@@ -42,6 +43,7 @@ void report(){
 			}
 		}
 	}
+	printf("Number of books sold:%d\nToal Sales:%f\n",nbooks_sold,bill_total);
 }
 
 
