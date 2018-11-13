@@ -173,7 +173,9 @@ int print_receipt(int pos){
 		printf("Recipient: %s", receipt_temp.cname);
 		printf("Books Ordered\t\t\t\t\tPrice");
 		for(int i=0;i<receipt_temp.num_books;i++)
-		{printf("%s\t\t\t\t\t%s",receipt_temp.bill_names[0][i]
+		{printf("%s\t\t\t\t\t%s",library.books[receipt_list.bill_names[0][i]].bname,receipt_list.bill_names[1][i]);
+		}
+	}
 	else
 		printf("Bill does not exist");
 	return 1;
@@ -314,7 +316,7 @@ int main(){
 	load_receipt_list();int choice;
 	char name[STR_LENGTH]; int input;
 	int low,up,x;
-	
+
 	//Inits
 	load_receipt_list();
 	//If library not present, make one!
@@ -356,7 +358,7 @@ int main(){
 				order();
 				break;
 			case 7:
-				printf("Bills:\n);
+				printf("Bills:\n");
 				print_receipt_list();
 				printf("Enter the index of the bill you want to access:\n");
 				scanf("%d",&x);
