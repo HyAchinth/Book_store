@@ -155,6 +155,7 @@ int save_receipt(char *name){
 	load_receipt_list();
 	add_receipt(name);
 	save_receipt_list();
+	printf("The  recepit is saved as :%s\n",name);
 	return 1;
 }
 
