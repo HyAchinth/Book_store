@@ -37,8 +37,8 @@ void report(){
 		if(t - billdate < diff){
 			for(j=0;j<receipt_temp.num_books;j++){
 				// Per book per receipt
-				nbooks_sold+=receipt_temp[1][j];
-				bill_total+= library.books[ receipt_temp.menu_indices[0][j] ].cost * receipt_temp[1][j];
+				nbooks_sold+=receipt_temp.menu_indices[1][j];
+				bill_total+= library.books[ receipt_temp.menu_indices[0][j] ].cost * receipt_temp.menu_indices[1][j];
 				
 			}
 		}
