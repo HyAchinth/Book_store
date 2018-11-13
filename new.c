@@ -113,7 +113,7 @@ int add_receipt(char * fn){
 
 int load_receipt(char *name){
 	if(if_exists(name)){
-		FILE *fp = fopen(name,"wb+");
+		FILE *fp = fopen(name,"rb");
 		fread(&receipt_temp,sizeof(receipt_s),1,fp);
 		fclose(fp);
 		return 1;
