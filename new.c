@@ -43,7 +43,7 @@ void report(){
 			}
 		}
 	}
-	printf("Number of books sold:%d\nToal Sales:%f\n",nbooks_sold,bill_total);
+	printf("Number of books sold:%d\nToal Sales:%0.2f\n",nbooks_sold,bill_total);
 }
 
 
@@ -103,7 +103,7 @@ int save_library(){
 void print_slice(){
 	printf("\tBOOKNAME\t\t\t\t\t\t  AUTHOR\t\t\t\tPUBLISHER\t                                    CATEGORY\t\t            PRICE\n");
 	for(int i=0;i<slices_len();i++){
-		printf("%-2d   %-60s %-30s %-50s %-30s %f \n",i+1,library.books[ library_slice[i] ].bname,library.books[ library_slice[i] ].aname,library.books[ library_slice[i] ].pname,library.books[ library_slice[i] ].category, library.books[ library_slice[i] ].cost );
+		printf("%-2d   %-60s %-30s %-50s %-30s %0.2f \n",i+1,library.books[ library_slice[i] ].bname,library.books[ library_slice[i] ].aname,library.books[ library_slice[i] ].pname,library.books[ library_slice[i] ].category, library.books[ library_slice[i] ].cost );
 	}
 }
 
@@ -178,10 +178,10 @@ int print_receipt(int pos){
 		printf("Books Ordered\t\t\t\t      \tNumber\t\t\tCost\n");
 		for(int i=0;i<receipt_temp.num_books;i++)
 		{
-		    printf("%-50s%d\t\t\t%f\n",library.books[ receipt_temp.menu_indices[0][i] ].bname,receipt_temp.menu_indices[1][i],library.books[ receipt_temp.menu_indices[0][i] ].cost * receipt_temp.menu_indices[1][i]);
+		    printf("%-50s%d\t\t\t%0.2f\n",library.books[ receipt_temp.menu_indices[0][i] ].bname,receipt_temp.menu_indices[1][i],library.books[ receipt_temp.menu_indices[0][i] ].cost * receipt_temp.menu_indices[1][i]);
 			total+= library.books[ receipt_temp.menu_indices[0][i] ].cost * receipt_temp.menu_indices[1][i];
 		}
-	printf("TOTAL PRICE:\t\t\t\t\t\t\t\t%f\n",total);
+	printf("TOTAL PRICE:\t\t\t\t\t\t\t\t%0.2f\n",total);
 	}
 	else
 		printf("Bill does not exist");
